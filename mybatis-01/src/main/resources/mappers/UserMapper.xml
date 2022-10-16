@@ -6,4 +6,22 @@
     <insert id="insertUser">
         insert into t_user values(null,'admin','123456',23,'男','12345@qq.com')
     </insert>
+    <update id="updateUser">
+        update t_user set username = '张三' where id = 4;
+    </update>
+    <select id="getUserById" resultType="com.coffee.mybatis.pojo.User">
+        select * from t_user where id = 3;
+    </select>
+    <select id="getAllUser" resultType="com.coffee.mybatis.pojo.User">
+        select * from t_user;
+    </select>
+    <select id="getUserByUsername" resultType="User">
+        select * from t_user where username = #{username}
+    </select>
+    <select id="checkLogin" resultType="java.lang.Boolean">
+        select count(1) from t_user where username = #{username} and password = #{password}
+    </select>
+    <select id="checkLoginByMap" resultType="java.lang.Boolean">
+        select count(1) from t_user where username = #{username} and password = #{password}
+    </select>
 </mapper>

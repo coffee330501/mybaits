@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+    <typeAliases>
+        <package name="com.coffee.mybatis.pojo"/>
+    </typeAliases>
     <!--  配置连接数据库环境  -->
     <environments default="development">
         <environment id="development">
