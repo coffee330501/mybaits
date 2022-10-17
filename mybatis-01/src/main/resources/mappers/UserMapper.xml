@@ -10,7 +10,7 @@
         update t_user set username = '张三' where id = 4;
     </update>
     <select id="getUserById" resultType="com.coffee.mybatis.pojo.User">
-        select * from t_user where id = 3;
+        select * from t_user where id = #{id};
     </select>
     <select id="getAllUser" resultType="com.coffee.mybatis.pojo.User">
         select * from t_user;

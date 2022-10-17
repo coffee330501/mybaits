@@ -5,13 +5,26 @@
 <configuration>
     <settings>
         <setting name="logImpl" value="LOG4J"/>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <typeAliases>
         <package name="com.coffee.mybatis.pojo"/>
     </typeAliases>
+    <typeHandlers>
+        <typeHandler handler="com.coffee.mybatis.config.JSONTypeHandler" javaType="com.coffee.mybatis.pojo.UserRawData"/>
+    </typeHandlers>
     <!--  配置连接数据库环境  -->
-    <environments default="development">
-        <environment id="development">
+    <environments default="postgres">
+        <environment id="postgres">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="org.postgresql.Driver"/>
+                <property name="url" value="jdbc:postgresql://localhost:5432/mybatis"/>
+                <property name="username" value="postgres"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+        <environment id="mysql">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>

@@ -36,19 +36,19 @@ public class MybatisTest {
         try (SqlSession session = sqlSessionFactory.openSession(true)) {
             UserMapper userMapper = session.getMapper(UserMapper.class);
 //            userMapper.updateUser();
-//           User user=  userMapper.getUserById(3);
-//            System.out.println(user.getUsername());
+           User user=  userMapper.getUserById(1);
+            System.out.println(user);
 //            List<User> users = userMapper.getAllUser();
 //            users.forEach(System.out::println);
 //            User user = userMapper.getUserByUsername("张三");
 //            System.out.println(user);
 //            boolean checkLogin = userMapper.checkLogin("张三", "123456");
 //            System.out.println(checkLogin);
-            HashMap<String, Object> map = new HashMap<>();
-            map.put("username","admin");
-            map.put("password","123456");
-            boolean checkLogin = userMapper.checkLoginByMap(map);
-            System.out.println(checkLogin);
+//            HashMap<String, Object> map = new HashMap<>();
+//            map.put("username","admin");
+//            map.put("password","123456");
+//            boolean checkLogin = userMapper.checkLoginByMap(map);
+//            System.out.println(checkLogin);
         }
     }
 }
