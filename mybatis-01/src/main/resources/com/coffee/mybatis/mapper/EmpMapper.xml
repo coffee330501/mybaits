@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.coffee.mybatis.mapper.EmpMapper">
+    <!--type 实体类类型-->
+    <resultMap id="emp" type="Emp">
+        <id column="eid" property="eid"/>
+        <result column="emp_name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+        <result column="email" property="email"/>
+    </resultMap>
+    <resultMap id="empAndDept" type="Emp">
+        <id column="eid" property="eid"/>
+        <result column="emp_name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+        <result column="email" property="email"/>
+        <result property="did" column="did"/>
+        <association property="dept" javaType="Dept" select="com.coffee.mybatis.mapper.DeptMapper.getDept" column="did">
+            <id property="did" column="did"/>
+            <id property="deptName" column="dept_name"/>
+        </association>
+    </resultMap>
+    <select id="getAllEmp" resultMap="emp">
+        select * from t_emp;
+    </select>
+    <select id="getEmp" resultMap="empAndDept">
+        select e.* from t_emp e where e.eid = #{eid}
+    </select>
+</mapper>

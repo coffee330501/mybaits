@@ -14,7 +14,7 @@
         <typeHandler handler="com.coffee.mybatis.config.JSONTypeHandler" javaType="com.coffee.mybatis.pojo.UserRawData"/>
     </typeHandlers>
     <!--  配置连接数据库环境  -->
-    <environments default="postgres">
+    <environments default="mysql">
         <environment id="postgres">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
@@ -36,6 +36,8 @@
     </environments>
     <!--  引入映射文件  -->
     <mappers>
-        <mapper resource="mappers/UserMapper.xml"/>
+<!--        <package name="com.coffee.mybatis.mapper"/>-->
+        <package name="com/coffee/mybatis/mapper"/>
+<!--        <mapper resource="com/coffee/mybatis/mapper/EmpMapper.xml" />-->
     </mappers>
 </configuration>

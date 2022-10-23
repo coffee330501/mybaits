@@ -6,9 +6,19 @@
     <insert id="insertUser">
         insert into t_user values(null,'admin','123456',23,'男','12345@qq.com')
     </insert>
+    <!--使用自增主键的值并赋值给id字段-->
+    <insert id="addUser" useGeneratedKeys="true" keyProperty="id">
+        insert into t_user values (#{id},#{username},#{password},#{age},#{sex},#{email})
+    </insert>
     <update id="updateUser">
         update t_user set username = '张三' where id = 4;
     </update>
+    <update id="updateAgeById" parameterType="java.util.List">
+        update t_user set age = 3 where id in
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+     </update>
     <select id="getUserById" resultType="com.coffee.mybatis.pojo.User">
         select * from t_user where id = #{id};
     </select>
@@ -23,5 +33,16 @@
     </select>
     <select id="checkLoginByMap" resultType="java.lang.Boolean">
         select count(1) from t_user where username = #{username} and password = #{password}
+    </select>
+    <select id="countUser" resultType="Integer">
+        select count(id) from t_user;
+    </select>
+    <select id="getAllUserToMap" resultType="java.util.Map">
+        select * from t_user;
+    </select>
+    <select id="getUserByUserNameLike" resultType="com.coffee.mybatis.pojo.User">
+<!--        <bind name="name" value="'%'+userName+'%'"/>-->
+<!--        select * from t_user where username like #{name}-->
+        select * from t_user where username like "%"#{userName}"%"
     </select>
 </mapper>
