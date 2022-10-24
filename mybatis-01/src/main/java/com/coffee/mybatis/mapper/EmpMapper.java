@@ -9,4 +9,5 @@ import java.util.List;
 public interface EmpMapper {
     List<Emp> getAllEmp();
     Emp getEmp(Integer eid);
+    List<Emp> getEmpByDid(Integer did);
 }

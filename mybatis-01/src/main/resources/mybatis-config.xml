@@ -6,6 +6,8 @@
     <settings>
         <setting name="logImpl" value="LOG4J"/>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!-- 对象属性(需要二次查询的属性)延迟加载 -->
+        <setting name="lazyLoadingEnabled" value="true"/>
     </settings>
     <typeAliases>
         <package name="com.coffee.mybatis.pojo"/>

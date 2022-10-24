@@ -3,8 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.coffee.mybatis.mapper.DeptMapper">
-
-    <select id="getDept" resultType="com.coffee.mybatis.pojo.Dept">
+    <resultMap id="dept" type="Dept">
+        <id column="did" property="did"/>
+        <result property="deptName" column="deptName"/>
+        <collection property="emps" ofType="Emp" column="did" select="com.coffee.mybatis.mapper.EmpMapper.getEmpByDid" />
+    </resultMap>
+    <select id="getDept" resultMap="dept">
         select * from t_dept where did = #{did}
     </select>
 </mapper>

@@ -56,9 +56,9 @@ public class MybatisTest {
 //            list.add(1);
 //            list.add(2);
 //            System.out.println(userMapper.updateAgeById(list));
-            User user = new User(null,"张三","123333",4,"男","1@qq.com",null);
-            userMapper.addUser(user);
-            System.out.println(user);
+//            User user = new User(null,"张三","123333",4,"男","1@qq.com",null);
+//            userMapper.addUser(user);
+//            System.out.println(user);
         }
     }
 }

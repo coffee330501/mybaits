@@ -18,7 +18,7 @@
         <result column="sex" property="sex"/>
         <result column="email" property="email"/>
         <result property="did" column="did"/>
-        <association property="dept" javaType="Dept" select="com.coffee.mybatis.mapper.DeptMapper.getDept" column="did">
+        <association property="dept" javaType="Dept" select="com.coffee.mybatis.mapper.DeptMapper.getDept" column="did" fetchType="eager">
             <id property="did" column="did"/>
             <id property="deptName" column="dept_name"/>
         </association>
@@ -28,5 +28,8 @@
     </select>
     <select id="getEmp" resultMap="empAndDept">
         select e.* from t_emp e where e.eid = #{eid}
+    </select>
+    <select id="getEmpByDid" resultMap="emp">
+        select e.* from t_emp e where e.did = #{did}
     </select>
 </mapper>
